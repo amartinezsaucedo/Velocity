@@ -26,7 +26,6 @@ apply plugin: 'com.android.library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
 }
 
 android {

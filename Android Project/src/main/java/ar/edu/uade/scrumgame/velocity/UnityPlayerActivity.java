@@ -1,6 +1,5 @@
 package ar.edu.uade.scrumgame.velocity;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.unity3d.player.*;
 
 import android.app.Activity;
@@ -131,34 +130,10 @@ public class UnityPlayerActivity extends Activity {
     }
 
     public void onGameEnded(int currentScore) {
-        showDialog(this.getScoreMessage(currentScore), (dialog, which) ->
-            endGame(currentScore)
-        );
-    }
-
-    private void endGame(int currentScore) {
         Intent returnIntent = new Intent();
         returnIntent.putExtra("currentScore", currentScore);
+        returnIntent.putExtra("expectedScore",expectedScore);
         setResult(Activity.RESULT_OK, returnIntent);
         finish();
-    }
-
-    private int getScoreMessage(int currentScore) {
-        if (currentScore > expectedScore) {
-            return R.string.lower_estimation;
-        }
-        if (currentScore < expectedScore) {
-            return R.string.higher_estimation;
-        }
-        return R.string.same_estimation;
-    }
-
-    private void showDialog(int message, MaterialDialog.SingleButtonCallback onPositiveClickListener) {
-        MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
-        builder.title(R.string.game_ended);
-        builder.content(message);
-        builder.positiveText(R.string.accept);
-        builder.onPositive(onPositiveClickListener);
-        builder.show();
     }
 }
