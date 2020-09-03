@@ -77,17 +77,4 @@ android {
         doNotStrip '*/arm64-v8a/*.so'
         doNotStrip '*/x86/*.so'
     }
-
-
-    bundle {
-        language {
-            enableSplit = false
-        }
-        density {
-            enableSplit = false
-        }
-        abi {
-            enableSplit = true
-        }
-    }
 }
